@@ -237,6 +237,10 @@ EOD;
             $config->privateKeyFilename
         );
 
+        $keyProvider = new PrivateKeyProvider(getenv('OCI_PRIVATE_KEY'), $signer->getKeyId());
+
+        $signer->setKeyProvider($keyProvider);
+
         $headers = $signer->getHeaders($url, $method, $body, 'application/json');
 
         $curlOptions = [
