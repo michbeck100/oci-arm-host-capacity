@@ -12,7 +12,7 @@ class OciConfig
     public string $ociUserId = '';
     public string $tenancyId = '';
     public string $keyFingerPrint = '';
-    public string $privateKeyFilename = '';
+    public string $privateKey = '';
 
     /**
      * @var array|string|null
@@ -32,7 +32,7 @@ class OciConfig
      * @param string $ociUserId
      * @param string $tenancyId
      * @param string $keyFingerPrint
-     * @param string $privateKeyFilename
+     * @param string $privateKey
      * @param string|array|null $availabilityDomains
      * @param string $subnetId
      * @param string $imageId
@@ -44,7 +44,7 @@ class OciConfig
         string $ociUserId,
         string $tenancyId,
         string $keyFingerPrint,
-        string $privateKeyFilename,
+        string $privateKey,
         $availabilityDomains,
         string $subnetId,
         string $imageId,
@@ -56,7 +56,7 @@ class OciConfig
         $this->ociUserId = $ociUserId;
         $this->tenancyId = $tenancyId;
         $this->keyFingerPrint = $keyFingerPrint;
-        $this->privateKeyFilename = $privateKeyFilename;
+        $this->privateKey = $privateKey;
         $this->availabilityDomains = $availabilityDomains;
         $this->subnetId = $subnetId;
         $this->imageId = $imageId;

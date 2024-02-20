@@ -233,13 +233,10 @@ EOD;
         $signer = new Signer(
             $config->tenancyId,
             $config->ociUserId,
-            $config->keyFingerPrint,
-            $config->privateKeyFilename
+            $config->keyFingerPrint
         );
 
-        $privateKey = (string) getenv('OCI_PRIVATE_KEY');
-        echo "OCI_PRIVATE_KEY=" . $privateKey . "\n";
-        $keyProvider = new PrivateKeyProvider($privateKey, $signer->getKeyId());
+        $keyProvider = new PrivateKeyProvider($config->privateKey, $signer->getKeyId());
 
         $signer->setKeyProvider($keyProvider);
 
