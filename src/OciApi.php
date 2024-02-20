@@ -237,9 +237,7 @@ EOD;
             $config->privateKeyFilename
         );
 
-        $privateKey = getenv('OCI_PRIVATE_KEY');
-
-        echo "OCI_PRIVATE_KEY=" . $privateKey;
+        $privateKey = (string) getenv('OCI_PRIVATE_KEY');
 
         $keyProvider = new PrivateKeyProvider($privateKey, $signer->getKeyId());
 
