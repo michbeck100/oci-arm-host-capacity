@@ -42,8 +42,12 @@ jobs:
         run: |
           composer update --prefer-dist --no-progress
       - name: Run script
-        run: |
-          php index.php
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          command: |
+            php index.php
         env:
           OCI_REGION: ${{ secrets.OCI_REGION }}
           OCI_USER_ID: ${{ secrets.OCI_USER_ID }}
@@ -60,7 +64,3 @@ jobs:
           OCI_SSH_PUBLIC_KEY: ${{ secrets.OCI_SSH_PUBLIC_KEY }}
           TELEGRAM_USER_ID: ${{ secrets.TELEGRAM_USER_ID }}
           TELEGRAM_BOT_API_KEY: ${{ secrets.TELEGRAM_BOT_API_KEY }}
-  rerun-failed-jobs:
-    needs: [ try-create-instance]
-    if: failure()
-    uses: ./.github/workflows/main.yml
